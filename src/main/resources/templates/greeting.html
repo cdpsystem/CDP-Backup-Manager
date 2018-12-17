@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <div th:replace="fragments/includes :: head"></div>
+        <title>Getting Started: Serving Web Content</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    </head>
+    <body>
+        <!--/*@thymesVar id="name" type="cdp.backupmanager.controllers.GreetingController"*/-->
+        <p th:text="'Hello, ' + ${name} + '!'"></p>
+    </body>
+</html>

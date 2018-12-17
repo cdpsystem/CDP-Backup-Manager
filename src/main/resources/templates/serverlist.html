@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/includes :: includes"></div>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div th:replace="fragments/header :: headerBody"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 text-center">
+                <h2>Server List</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12 table-responsive">
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th>Username</th>
+                        <th>Host</th>
+                        <th>Port</th>
+                        <th>Options</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="server : ${servercount}">
+                        <td th:text="${server.user}"></td>
+                        <td th:text="${server.host}"></td>
+                        <td th:text="${server.port}"></td>
+                        <td><a href="#">Edit</a><br/><a href="#">delete</a></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
