@@ -15,4 +15,19 @@ public class ServerListController {
         model.addAttribute("servercount", ms.getServers());
         return "serverlist";
     }
+
+    @GetMapping("/deleteserver")
+    public String deleteserver(@RequestParam(name="serverid", required=true) String serverid, Model model){
+        MongoService ms = new MongoService();
+        System.out.println(serverid);
+        ms.deleteServer(serverid);
+
+        return "redirect:/serverlist";
+    }
+
+    @GetMapping("/addserver")
+    public String addserver(Model model){
+
+        return "addserver";
+    }
 }

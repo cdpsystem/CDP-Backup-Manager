@@ -1,11 +1,13 @@
 package cdp.backupmanager.services;
 
 import cdp.backupmanager.models.JSCHConnectData;
+import cdp.backupmanager.threads.JSCHConnect;
 import cdp.backupmanager.utils.MongoCollections;
 import com.mongodb.DBCollection;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+import org.bson.types.ObjectId;
 import xyz.morphia.Datastore;
 import xyz.morphia.Morphia;
 
@@ -30,6 +32,11 @@ public class MongoService {
     public void saveServer(JSCHConnectData connData){
         Datastore datastore = morphia.createDatastore(mc,MongoCollections.DATABASE.toString());
         datastore.save(connData);
+    }
+
+    public void deleteServer(String serverid){
+        Datastore datastore = morphia.createDatastore(mc,MongoCollections.DATABASE.toString());
+        datastore.findAndDelete(datastore.createQuery(JSCHConnectData.class).filter("_id",new ObjectId(serverid)));
     }
 
 
